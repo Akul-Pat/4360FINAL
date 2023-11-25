@@ -74,7 +74,6 @@ difficult_indices = np.argsort(np.abs(confidence_scores - 0.5))[:5]
 for lay in model.layers:
     print(lay.name)
 
-#analyze difficult images
 def analyze_difficult_images(X_test, y_test, difficult_indices, model):
     for layer in model.layers:
         # Visualize for each convolutional layer
@@ -97,7 +96,7 @@ def analyze_difficult_images(X_test, y_test, difficult_indices, model):
             plt.subplot(1, 3, 3)
             overlay_image = overlay_grad_cam(X_test[idx], grad_cam_image)
             plt.imshow(overlay_image)
-            plt.title("Overlay with Grad-CAM")
+            plt.title(f"Grad-CAM - Layer: {layer.name}")
 
             plt.show()
 
